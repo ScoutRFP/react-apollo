@@ -13,7 +13,7 @@ export const ApolloProvider: React.FC<ApolloProviderProps<any>> = ({
   client,
   children
 }) => {
-  const ApolloContext = getApolloContext();
+  const ApolloContext = getApolloContext(client);
   return (
     <ApolloContext.Consumer>
       {(context = {}) => {
@@ -24,7 +24,7 @@ export const ApolloProvider: React.FC<ApolloProviderProps<any>> = ({
         invariant(
           context.client,
           'ApolloProvider was not passed a client instance. Make ' +
-            'sure you pass in your client via the "client" prop.'
+          'sure you pass in your client via the "client" prop.'
         );
 
         return (

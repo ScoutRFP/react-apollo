@@ -8,9 +8,10 @@ export interface ApolloContextValue {
 
 let apolloContext: React.Context<ApolloContextValue>;
 
-export function getApolloContext() {
+export function getApolloContext(client?: ApolloContextValue['client']) {
   if (!apolloContext) {
-    apolloContext = React.createContext<ApolloContextValue>({});
+    const defaultContext = client ? { client } : {};
+    apolloContext = React.createContext<ApolloContextValue>(defaultContext);
   }
   return apolloContext;
 }
